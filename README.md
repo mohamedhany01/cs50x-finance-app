@@ -1,4 +1,4 @@
-# CS50x Finance Web App
+# CS50x Finance Web App [Live Demo](https://cs50x-finance-app.herokuapp.com/login)
 
 ## Introduction
 The project is an assessment of the cs50-finance problem, it uses the APIs of iexcloud.io to retrieve the real stock prices in real-time. Moreover, the registered user can buy/sell his/her shares freely
