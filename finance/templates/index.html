@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if user_purchases %}
+        {% for purchase in user_purchases %}
+          <tr>
+            <td>{{ purchase.name }}</td>
+            <td>{{ purchase.symbol }}</td>
+            <td>{{ purchase.shares }}</td>
+            <td>{{ purchase.price | usd }}</td>
+            <td>{{ purchase.total | usd}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+      <tr>
+        <td title="Available money to spend" class="text text-info font-weight-bold">Available Cash</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Available money to spend" class="text-center">{{ available_cash | usd }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Total cash: Available cash + All Total stocks" class="text-center"><strong>{{ total_cash | usd }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

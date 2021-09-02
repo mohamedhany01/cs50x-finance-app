@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <!-- Registration form -->
+    <form action="" method="POST" novalidate>
+        <!-- CSRF form protection  -->
+        {{ form.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Registration</legend>
+            <div class="form-group">
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <div class="text-danger"><strong>{{form.username.label}}: </strong> {{ error}}</div>
+                    {% endfor %}
+                    {{ form.username(class="form-control border border-danger") }}
+                {% else %}
+                    {{ form.username(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="text-danger"><strong>{{form.email.label}}: </strong> {{ error}}</div>
+                    {% endfor %}
+                    {{ form.email(class="form-control border border-danger") }}
+                {% else %}
+                    {{ form.email(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <div class="text-danger"><strong>{{form.password.label}}: </strong> {{ error}}</div>
+                    {% endfor %}
+                    {{ form.password(class="form-control border border-danger") }}
+                {% else %}
+                    {{ form.password(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {% if form.confirm_password.errors %}
+                    {% for error in form.confirm_password.errors %}
+                        <div class="text-danger"><strong>{{form.confirm_password.label}}: </strong> {{ error}}</div>
+                    {% endfor %}
+                    {{ form.confirm_password(class="form-control border border-danger") }}
+                {% else %}
+                    {{ form.confirm_password(class="form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-success") }}
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

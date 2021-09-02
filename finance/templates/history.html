@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  History
+{% endblock %}
+
+{% block main %}
+  {% if user_history %}
+  <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Transacted</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for his in user_history %}
+            <tr>
+              <td>{{ his.symbol }}</td>
+              <td>{{ his.shares }}</td>
+              <td>{{ his.price | usd }}</td>
+              <td>{{ his.transacted | formatted }}</td>
+            </tr>
+          {% endfor %}
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  {% else %}
+    <h4 class="text-center text text-success">Nothing to display</h4>
+  {% endif %}
+
+{% endblock %}
